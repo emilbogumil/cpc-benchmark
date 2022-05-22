@@ -2,19 +2,19 @@
 #include <chrono>
 using namespace std;
 
-const int MAX_PRIME = 1000;
+const int PRIMES_TOP_BOUNDRY = 1001;
 
 int main()
 {
     auto t1 = chrono::high_resolution_clock::now();
 
-    bool excluded[MAX_PRIME + 1] = {};
+    bool excluded[PRIMES_TOP_BOUNDRY] = {};
     int currentNum = 2;
     int primeCount = 0;
 
-    for (currentNum; currentNum <= MAX_PRIME; currentNum++) {
+    for (currentNum; currentNum < PRIMES_TOP_BOUNDRY; currentNum++) {
         if (!excluded[currentNum]) {
-            for (int i = currentNum * currentNum; i <= MAX_PRIME; i += currentNum) {
+            for (int i = currentNum * currentNum; i < PRIMES_TOP_BOUNDRY; i += currentNum) {
                 excluded[i] = true;
             }
             primeCount++;
